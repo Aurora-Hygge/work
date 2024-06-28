@@ -208,30 +208,170 @@
             <i class="fas fa-folder"></i>&nbsp;常记公式
         </div>
         <div class="category-post-list">
-            
-<div class="archive-list-container border-box">
-    
-        <section class="archive-item border-box">
-            <div class="archive-item-header border-box">
-                <span class="archive-year">2025</span>
-            </div>
-            <ul class="archive-item-body border-box">
-                
-                    <li class="post-item border-box">
-                        <span class="post-date border-box">01-01</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/work/2025/01/01/%E9%AB%98%E6%95%B0/0%E5%B8%B8%E8%AE%B0%E5%85%AC%E5%BC%8F/"
-                        >常记公式</a>
-                    </li>
-                
-            </ul>
-        </section>
-    
-</div>
+            $archive-year-font-size = 1.6rem
+$post-title-font-size = 1.2rem
+$post-date-font-size = 1rem
+$post-date-width = 3.6rem
+$post-item-padding = 1.2rem
+$timeline-circle-width = 0.6rem
+
+.archive-list-container {
+
+  .archive-item {
+    margin-bottom var(--component-gap)
+
+    &:last-child {
+      margin-bottom 0
+    }
+
+    .archive-item-header {
+      margin-bottom 0.8rem
+
+      .archive-year {
+        margin-right 6px
+        color var(--text-color-2)
+        font-weight 600
+        font-size $archive-year-font-size
+
+        +keep-tablet() {
+          font-size $archive-year-font-size * 0.9
+        }
+      }
+    }
+
+
+    .archive-item-body {
+      padding-left $post-item-padding
+
+      .post-item {
+        display flex
+        align-items center
+        justify-content space-between
+        width 100%
+        padding ($post-item-padding * 0.68) 0 ($post-item-padding * 0.68) $post-item-padding
+        font-size 1rem
+        border-left 1px dashed var(--border-color)
+
+        &::before {
+          position absolute
+          top 50%
+          left -($timeline-circle-width * 0.5)
+          z-index $z-index-1
+          box-sizing border-box
+          width $timeline-circle-width
+          height $timeline-circle-width
+          background var(--text-color-5)
+          border-radius 50%
+          transform translateY(-50%)
+          content ''
+        }
+
+
+        &:hover {
+          &::before {
+            background var(--text-color-4)
+          }
+
+
+          a.post-title {
+            color var(--primary-color)
+          }
+        }
+
+        .post-date {
+          width $post-date-width
+          margin-right $post-item-padding
+          color var(--text-color-3)
+          font-size $post-date-font-size
+        }
+
+
+        a.post-title {
+          width 'calc(100% - %s)' % $post-date-width
+          color var(--text-color-3)
+        }
+      }
+    }
+  }
+}
+
+
 
         </div>
     </div>
-    
+    .paginator {
+  margin-top 2rem
+  padding-top 0.2rem
+  user-select none
+
+  .btn-wrap {
+    cursor not-allowed
+
+    &.allowed {
+      cursor pointer
+
+      a.jump-btn {
+        pointer-events auto
+
+
+        i {
+          color var(--text-color-3)
+        }
+      }
+    }
+
+    a.jump-btn {
+      padding 0.2rem
+      pointer-events none
+
+      i {
+        color var(--text-color-4)
+        font-size 1rem
+      }
+    }
+  }
+
+
+
+  .base-color-size {
+    color var(--text-color-3)
+    font-size 1rem
+  }
+
+  .page-number-box {
+    margin 0 1rem
+
+    .page-number-input {
+      width 2.8rem
+      height 1.8rem
+      margin 0
+      padding 0
+      font-weight 400 !important
+      text-align center
+      background none
+      border 0.1rem solid var(--border-color)
+      border-radius 0.3rem
+      outline none
+      -webkit-appearance none
+
+      &::-webkit-outer-spin-button
+      &::-webkit-inner-spin-button {
+        -webkit-appearance none !important
+      }
+
+      &:hover
+      &:focus {
+        border-color var(--primary-color)
+      }
+    }
+
+
+    .delimiter {
+      margin 0 0.6rem
+    }
+  }
+}
+
 
 
 
